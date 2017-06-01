@@ -22,5 +22,4 @@ export class AuthService {
   public login(): void {
     this.auth0.authorize();
   }
-
 }
