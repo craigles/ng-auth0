@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
   providers: [AuthService]
 })
 export class AppComponent {
-  constructor(private authService: AuthService) {  }
+  constructor(public auth: AuthService) {
+    auth.handleAuthentication();
+  }
   title = 'app works!';
 
   login(): void {
-    this.authService.login();
+    this.auth.login();
   }
 }

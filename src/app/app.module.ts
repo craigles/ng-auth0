@@ -6,19 +6,26 @@ import { Router, RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './auth.service';
+import { CallbackComponent } from './callback/callback.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'callback', component: CallbackComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CallbackComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, {useHash: true})
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
