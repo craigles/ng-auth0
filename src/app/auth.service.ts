@@ -1,6 +1,7 @@
 // src/app/auth/auth.service.ts
 
 import { Injectable } from '@angular/core';
+import { PlatformLocation } from '@angular/common';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import auth0 from 'auth0-js';
@@ -13,11 +14,11 @@ export class AuthService {
     domain: 'craigles.au.auth0.com',
     responseType: 'token id_token',
     audience: 'https://craigles.au.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200/callback',      
+    redirectUri: `${window.location.href}callback`,
     scope: 'openid'
   });
 
-  constructor(public router: Router) {}
+  constructor(public router: Router) { }
 
   public login(): void {
     this.auth0.authorize();
